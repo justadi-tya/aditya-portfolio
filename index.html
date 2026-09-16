@@ -1230,7 +1230,49 @@ footer{
   }
 
 }
+/* FINAL DESKTOP LAYOUT FIX */
+.hero{
+  height:100vh !important;
+  min-height:100vh !important;
+  max-height:none !important;
+  flex:none !important;
+  display:flex !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
 
+.hero-content{
+  height:100%;
+  min-height:0 !important;
+  position:relative !important;
+}
+
+main{
+  display:block !important;
+  position:relative !important;
+  clear:both !important;
+}
+
+main > section{
+  display:block !important;
+  position:relative !important;
+  float:none !important;
+  clear:both !important;
+  width:100% !important;
+}
+
+@media (max-width:950px){
+  .hero{
+    height:auto !important;
+    min-height:100svh !important;
+    max-height:none !important;
+  }
+
+  .hero-content{
+    height:auto !important;
+    min-height:0 !important;
+  }
+}
 </style>
 </head>
 
