@@ -4,29 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0b0a">
-<meta name="description" content="Portfolio of Aditya Nautiyal — Computer Science Engineering student, developer and problem solver.">
+<meta name="description" content="Aditya Nautiyal — Computer Science Engineering student, developer and problem solver.">
 <title>Aditya Nautiyal | CSE Student & Developer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --bg:#0b0b0a;
-  --bg2:#11110f;
+  --bg-soft:#11110f;
   --surface:rgba(255,255,255,.045);
-  --surface2:rgba(255,255,255,.075);
-  --text:#f4efe7;
+  --surface-hover:rgba(255,255,255,.075);
+
+  --text:#f5f0e8;
   --soft:#b9b1a6;
   --muted:#80796f;
+
   --gold:#d7b77a;
-  --gold2:#f0d7a0;
-  --line:rgba(240,215,160,.16);
+  --gold-light:#f0d7a0;
+
+  --line:rgba(215,183,122,.20);
   --white-line:rgba(255,255,255,.09);
+
   --max:1180px;
-  --nav:78px;
+  --nav-height:78px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   margin:0;
@@ -36,17 +51,27 @@
 
 html{
   scroll-behavior:smooth;
-  scroll-padding-top:90px;
+  scroll-padding-top:100px;
 }
 
 body{
   background:
-    radial-gradient(circle at 80% 10%,rgba(215,183,122,.08),transparent 30%),
-    radial-gradient(circle at 10% 60%,rgba(215,183,122,.045),transparent 28%),
+    radial-gradient(
+      circle at 82% 8%,
+      rgba(215,183,122,.09),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 5% 55%,
+      rgba(215,183,122,.045),
+      transparent 30%
+    ),
     var(--bg);
+
   color:var(--text);
   font-family:"DM Sans",sans-serif;
   line-height:1.65;
+
   overflow-x:hidden;
 }
 
@@ -57,7 +82,10 @@ body::before{
   pointer-events:none;
   z-index:9999;
   opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+  background-image:url(
+    "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E"
+  );
 }
 
 a{
@@ -69,24 +97,33 @@ button{
   font:inherit;
 }
 
+img{
+  max-width:100%;
+}
+
 .container{
   width:min(var(--max),calc(100% - 48px));
-  margin:auto;
+  margin:0 auto;
 }
 
 
 /* =========================================================
    LOADER
-   ========================================================= */
+========================================================= */
 
 #loader{
   position:fixed;
   inset:0;
-  background:#0a0a09;
+  background:#090908;
+
   display:grid;
   place-items:center;
+
   z-index:5000;
-  transition:opacity .7s ease,visibility .7s ease;
+
+  transition:
+    opacity .7s ease,
+    visibility .7s ease;
 }
 
 #loader.hide{
@@ -99,29 +136,33 @@ button{
 }
 
 .loader-mark{
-  width:56px;
-  height:56px;
+  width:58px;
+  height:58px;
+
   border:1px solid rgba(215,183,122,.35);
   border-radius:50%;
+
   display:grid;
   place-items:center;
-  margin:auto auto 20px;
-  animation:pulse 1.5s infinite;
+
+  margin:0 auto 18px;
+
+  animation:loaderPulse 1.5s infinite;
 }
 
 .loader-mark span{
-  font:21px "Playfair Display",serif;
-  color:var(--gold2);
+  color:var(--gold-light);
+  font:22px "Playfair Display",serif;
 }
 
 .loader-text{
-  font-size:10px;
-  letter-spacing:.32em;
   color:var(--muted);
+  font-size:10px;
+  letter-spacing:.3em;
   text-transform:uppercase;
 }
 
-@keyframes pulse{
+@keyframes loaderPulse{
   0%,100%{
     transform:scale(1);
     opacity:.65;
@@ -136,37 +177,45 @@ button{
 
 /* =========================================================
    NAVIGATION
-   ========================================================= */
+========================================================= */
 
 nav{
   position:fixed;
   top:0;
   left:0;
+
   width:100%;
-  height:var(--nav);
-  z-index:1000;
+  height:var(--nav-height);
+
+  z-index:1500;
+
   display:flex;
   align-items:center;
-  transition:.35s ease;
+
+  transition:
+    background .35s ease,
+    border .35s ease;
 }
 
 nav.scrolled{
   background:rgba(11,11,10,.82);
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
+
   border-bottom:1px solid var(--white-line);
 }
 
 .nav-inner{
   width:min(var(--max),calc(100% - 48px));
   margin:auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
 .logo{
-  font:22px "Playfair Display",serif;
+  font:23px "Playfair Display",serif;
 }
 
 .logo span{
@@ -175,150 +224,296 @@ nav.scrolled{
 
 .nav-links{
   display:flex;
-  gap:30px;
   align-items:center;
+  gap:30px;
 }
 
 .nav-links a{
   color:var(--soft);
-  font-size:13px;
-  transition:.25s;
+  font-size:12px;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
 }
 
 .nav-links a:hover{
-  color:var(--gold2);
+  color:var(--gold-light);
+  transform:translateY(-2px);
 }
 
+
+/* Desktop doesn't need menu button */
 .menu-btn{
   display:none;
-  border:1px solid var(--white-line);
-  background:var(--surface);
-  color:var(--text);
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  cursor:pointer;
 }
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 
 .mobile-menu{
   position:fixed;
   inset:0;
-  background:rgba(10,10,9,.98);
-  z-index:900;
-  padding:110px 30px 30px;
-  transform:translateY(-100%);
-  transition:transform .55s cubic-bezier(.76,0,.24,1);
+
+  background:rgba(9,9,8,.98);
+
+  z-index:1400;
+
+  padding:110px 30px 40px;
+
+  transform:translateX(100%);
+
+  transition:
+    transform .55s cubic-bezier(.76,0,.24,1);
 }
 
 .mobile-menu.open{
-  transform:translateY(0);
+  transform:translateX(0);
 }
 
 .mobile-menu small{
   display:block;
+
   color:var(--muted);
-  margin-bottom:25px;
-  text-transform:uppercase;
-  letter-spacing:.2em;
+
   font-size:10px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+
+  margin-bottom:25px;
 }
 
 .mobile-menu a{
   display:block;
-  font:clamp(34px,10vw,60px) "Playfair Display",serif;
+
+  font:clamp(34px,10vw,58px) "Playfair Display",serif;
+
   padding:12px 0;
+
   border-bottom:1px solid var(--white-line);
+}
+
+.mobile-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+
+  width:48px;
+  height:48px;
+
+  border-radius:50%;
+
+  border:1px solid var(--white-line);
+  background:var(--surface);
+
+  color:var(--text);
+
+  cursor:pointer;
+
+  font-size:25px;
+}
+
+
+/* =========================================================
+   MOBILE SIDE MENU BUTTON
+========================================================= */
+
+.side-menu-button{
+  display:none;
+
+  position:fixed;
+
+  right:0;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  z-index:1300;
+
+  width:48px;
+  height:125px;
+
+  border:1px solid rgba(215,183,122,.30);
+  border-right:none;
+
+  border-radius:18px 0 0 18px;
+
+  background:rgba(17,17,15,.82);
+
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+
+  color:var(--gold-light);
+
+  cursor:pointer;
+
+  box-shadow:
+    -10px 0 40px rgba(0,0,0,.25);
+}
+
+.side-menu-button span{
+  writing-mode:vertical-rl;
+
+  transform:rotate(180deg);
+
+  font-size:9px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
 }
 
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero{
   position:relative;
-  isolation:isolate;
-  min-height:100vh;
+
+  width:100%;
+
   min-height:100svh;
-  display:flex;
-  align-items:center;
+  min-height:100vh;
+
   overflow:hidden;
-  padding:90px 0 55px;
+
+  isolation:isolate;
+
+  display:block;
+
+  padding-top:var(--nav-height);
 }
+
+
+/* WebGL background */
 
 #webgl{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   z-index:0;
+
   pointer-events:none;
 }
+
+
+/* Hero dark overlay */
 
 .hero::after{
   content:"";
+
   position:absolute;
+
   inset:0;
+
   z-index:1;
+
   pointer-events:none;
-  background:linear-gradient(
-    90deg,
-    rgba(11,11,10,.94),
-    rgba(11,11,10,.68) 45%,
-    rgba(11,11,10,.16)
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11,11,10,.94),
+      rgba(11,11,10,.65) 50%,
+      rgba(11,11,10,.16)
+    );
 }
 
-.hero-content{
+
+/* IMPORTANT:
+   Hero content is inside normal hero flow.
+   Nothing from the sections below can overlap it.
+*/
+
+.hero-inner{
   position:relative;
-  z-index:3;
+
+  z-index:5;
+
   width:min(var(--max),calc(100% - 48px));
-  margin:auto;
+
+  min-height:calc(100svh - var(--nav-height));
+
+  margin:0 auto;
+
   display:grid;
+
   grid-template-columns:1.08fr .92fr;
+
   align-items:center;
+
   gap:60px;
+
+  padding:
+    55px
+    0
+    65px;
 }
 
-.hero-text,
-.hero-photo-wrap{
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-text{
   position:relative;
-  z-index:4;
+  z-index:10;
 }
 
 .eyebrow{
-  display:inline-flex;
+  display:flex;
   align-items:center;
+
   gap:10px;
-  color:var(--gold2);
+
+  color:var(--gold-light);
+
   font-size:10px;
+
   letter-spacing:.25em;
+
   text-transform:uppercase;
+
   margin-bottom:24px;
 }
 
 .eyebrow::before{
   content:"";
+
   width:28px;
   height:1px;
+
   background:var(--gold);
 }
 
 .hero h1{
-  font:600 clamp(52px,7vw,94px)/.98 "Playfair Display",serif;
+  max-width:720px;
+
+  font:
+    600
+    clamp(55px,7vw,94px)
+    / .98
+    "Playfair Display",serif;
+
   letter-spacing:-.055em;
-  max-width:700px;
 }
 
 .hero h1 em{
   font-style:normal;
-  color:var(--gold2);
+  color:var(--gold-light);
 }
 
 .hero-role{
-  margin-top:27px;
+  margin-top:28px;
+
   color:var(--soft);
-  font-size:17px;
+
+  font-size:16px;
 }
 
 .hero-role strong{
@@ -327,29 +522,43 @@ nav.scrolled{
 
 .hero-description{
   max-width:590px;
+
+  margin-top:19px;
+
   color:var(--soft);
-  font-size:15px;
-  margin-top:20px;
+
+  font-size:14px;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
+
   gap:13px;
-  margin-top:34px;
+
+  margin-top:32px;
 }
 
 .btn{
+  min-height:50px;
+
+  padding:0 23px;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:50px;
-  padding:0 23px;
+
   border-radius:999px;
+
   border:1px solid var(--line);
+
   font-size:12px;
   font-weight:600;
-  transition:.3s;
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    border .3s ease;
 }
 
 .btn:hover{
@@ -358,95 +567,148 @@ nav.scrolled{
 
 .btn-primary{
   background:var(--gold);
+
   color:#17130d;
+
   border-color:var(--gold);
 }
 
 .btn-primary:hover{
-  background:var(--gold2);
+  background:var(--gold-light);
 }
 
 .btn-outline{
   background:rgba(255,255,255,.025);
-  color:var(--text);
 }
 
 .btn-outline:hover{
-  background:var(--surface2);
+  background:var(--surface-hover);
+
   border-color:rgba(215,183,122,.4);
 }
 
+
+/* =========================================================
+   HERO PHOTO
+========================================================= */
+
 .hero-photo-wrap{
-  justify-self:end;
+  position:relative;
+
+  z-index:10;
+
   width:min(420px,100%);
+
+  justify-self:end;
 }
 
 .hero-photo-frame{
   position:relative;
-  border:1px solid rgba(215,183,122,.3);
-  border-radius:34px;
+
   padding:10px;
+
+  border:
+    1px solid
+    rgba(215,183,122,.30);
+
+  border-radius:34px;
+
   background:rgba(255,255,255,.035);
+
   box-shadow:
     0 30px 100px rgba(0,0,0,.45),
     inset 0 0 50px rgba(215,183,122,.035);
+
   transform:rotate(1.5deg);
 }
 
 .hero-photo-frame::before{
   content:"";
+
   position:absolute;
+
   inset:18px;
-  border:1px solid rgba(255,255,255,.07);
+
+  border:
+    1px solid
+    rgba(255,255,255,.07);
+
   border-radius:25px;
+
   pointer-events:none;
-  z-index:2;
+
+  z-index:3;
 }
 
 .hero-photo{
   width:100%;
+
   display:block;
+
   aspect-ratio:.84;
+
   object-fit:cover;
   object-position:center;
+
   border-radius:25px;
-  filter:saturate(.88) contrast(1.03);
+
+  filter:
+    saturate(.88)
+    contrast(1.03);
 }
 
 .photo-label{
   position:absolute;
-  bottom:25px;
+
   left:25px;
-  z-index:4;
+  bottom:25px;
+
+  z-index:5;
+
   padding:9px 13px;
+
   border:1px solid rgba(255,255,255,.13);
+
   background:rgba(10,10,9,.62);
+
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
   border-radius:999px;
+
+  color:var(--gold-light);
+
   font-size:9px;
+
   letter-spacing:.18em;
-  color:var(--gold2);
+
   text-transform:uppercase;
 }
 
 .floating-orb{
   position:absolute;
+
   width:100px;
   height:100px;
-  border-radius:50%;
+
   right:-35px;
   top:16%;
+
+  border-radius:50%;
+
   background:
     radial-gradient(
       circle at 35% 30%,
-      rgba(240,215,160,.3),
+      rgba(240,215,160,.30),
       rgba(215,183,122,.03) 55%,
       transparent 70%
     );
-  animation:float 5s ease-in-out infinite;
+
+  animation:floatOrb 5s ease-in-out infinite;
 }
 
-@keyframes float{
+@keyframes floatOrb{
+
   0%,100%{
     transform:translateY(0);
   }
@@ -456,74 +718,123 @@ nav.scrolled{
   }
 }
 
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
 .scroll-indicator{
   position:absolute;
-  bottom:22px;
+
   left:50%;
+  bottom:22px;
+
   transform:translateX(-50%);
-  z-index:4;
+
+  z-index:10;
+
   display:flex;
   flex-direction:column;
   align-items:center;
+
   gap:8px;
+
   color:var(--muted);
+
   font-size:9px;
+
   letter-spacing:.2em;
+
   text-transform:uppercase;
 }
 
 .scroll-line{
   width:1px;
   height:38px;
-  background:linear-gradient(var(--gold),transparent);
+
+  background:
+    linear-gradient(
+      var(--gold),
+      transparent
+    );
 }
 
 
 /* =========================================================
    GENERAL SECTIONS
-   ========================================================= */
+========================================================= */
 
 main{
   position:relative;
+
+  display:block;
+
+  width:100%;
+
   z-index:2;
 }
 
 section{
   position:relative;
-  z-index:2;
-  padding:125px 0;
+
+  display:block;
+
+  width:100%;
+
   clear:both;
+
+  padding:125px 0;
 }
 
 .section-head{
   display:flex;
+
   justify-content:space-between;
   align-items:flex-end;
+
   gap:40px;
+
   margin-bottom:55px;
 }
 
 .section-number{
   color:var(--gold);
+
   font-size:10px;
+
   letter-spacing:.25em;
+
   margin-bottom:14px;
 }
 
 .section-title{
-  font:500 clamp(40px,5vw,65px)/1 "Playfair Display",serif;
+  font:
+    500
+    clamp(40px,5vw,65px)
+    / 1
+    "Playfair Display",serif;
+
   letter-spacing:-.045em;
 }
 
 .section-intro{
   max-width:430px;
+
   color:var(--soft);
+
   font-size:14px;
 }
 
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
 .reveal{
   opacity:0;
-  transform:translateY(35px);
+
+  transform:translateY(25px);
+
   transition:
     opacity .8s ease,
     transform .8s ease;
@@ -531,32 +842,41 @@ section{
 
 .reveal.visible{
   opacity:1;
+
   transform:none;
 }
 
 
 /* =========================================================
    ABOUT
-   ========================================================= */
+========================================================= */
 
 .about-grid{
   display:grid;
+
   grid-template-columns:.85fr 1.15fr;
+
   gap:90px;
+
   align-items:start;
 }
 
 .about-large{
-  font:clamp(27px,3.2vw,43px)/1.2 "Playfair Display",serif;
+  font:
+    clamp(27px,3.2vw,43px)
+    / 1.2
+    "Playfair Display",serif;
+
   letter-spacing:-.025em;
 }
 
 .about-large span{
-  color:var(--gold2);
+  color:var(--gold-light);
 }
 
 .about-copy{
   color:var(--soft);
+
   font-size:15px;
 }
 
@@ -566,24 +886,37 @@ section{
 
 .fact-grid{
   display:grid;
+
   grid-template-columns:repeat(2,1fr);
+
   gap:12px;
+
   margin-top:34px;
 }
 
 .fact{
   padding:19px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   background:var(--surface);
+
   border-radius:17px;
 }
 
 .fact small{
   display:block;
+
   color:var(--muted);
+
   font-size:9px;
+
   text-transform:uppercase;
+
   letter-spacing:.18em;
+
   margin-bottom:7px;
 }
 
@@ -594,86 +927,128 @@ section{
 
 /* =========================================================
    SKILLS
-   ========================================================= */
+========================================================= */
 
 .skills-grid{
   display:grid;
+
   grid-template-columns:repeat(2,1fr);
+
   gap:18px;
 }
 
 .skill-card{
   padding:28px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   border-radius:24px;
+
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,.055),
       rgba(255,255,255,.018)
     );
-  transition:.35s;
+
+  transition:
+    transform .35s ease,
+    border .35s ease;
 }
 
 .skill-card:hover{
   transform:translateY(-7px);
-  border-color:rgba(215,183,122,.3);
+
+  border-color:
+    rgba(215,183,122,.30);
 }
 
 .skill-icon{
   width:42px;
   height:42px;
-  border:1px solid var(--line);
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:13px;
+
   display:grid;
   place-items:center;
-  color:var(--gold2);
+
+  color:var(--gold-light);
+
   margin-bottom:21px;
 }
 
 .skill-card h3{
-  font:25px "Playfair Display",serif;
+  font:
+    25px
+    "Playfair Display",serif;
+
   margin-bottom:9px;
 }
 
 .skill-card p{
   color:var(--soft);
+
   font-size:13px;
 }
 
 .tags{
   display:flex;
+
   flex-wrap:wrap;
+
   gap:8px;
+
   margin-top:20px;
 }
 
 .tag{
-  border:1px solid var(--white-line);
+  border:
+    1px solid
+    var(--white-line);
+
   padding:6px 10px;
+
   border-radius:999px;
-  font-size:10px;
+
   color:#d5cec4;
+
+  font-size:10px;
 }
 
 
 /* =========================================================
    PROJECTS
-   ========================================================= */
+========================================================= */
 
 .projects-grid{
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
+
   gap:18px;
 }
 
 .project-card{
   position:relative;
+
   min-height:410px;
+
   padding:27px;
+
   border-radius:28px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   overflow:hidden;
+
   background:
     radial-gradient(
       circle at 80% 10%,
@@ -685,36 +1060,54 @@ section{
       rgba(255,255,255,.06),
       rgba(255,255,255,.018)
     );
+
   display:flex;
+
   flex-direction:column;
+
   justify-content:space-between;
-  transition:.4s;
+
+  transition:
+    transform .4s ease,
+    border .4s ease;
 }
 
 .project-card:hover{
   transform:translateY(-10px);
-  border-color:rgba(215,183,122,.32);
+
+  border-color:
+    rgba(215,183,122,.32);
 }
 
 .project-top{
   display:flex;
+
   justify-content:space-between;
 }
 
 .project-index{
   color:var(--gold);
+
   font-size:10px;
+
   letter-spacing:.15em;
 }
 
 .project-arrow{
   width:35px;
   height:35px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   border-radius:50%;
+
   display:grid;
   place-items:center;
-  color:var(--gold2);
+
+  color:var(--gold-light);
+
   transition:.3s;
 }
 
@@ -723,12 +1116,17 @@ section{
 }
 
 .project-content h3{
-  font:30px/1.05 "Playfair Display",serif;
+  font:
+    30px
+    / 1.05
+    "Playfair Display",serif;
+
   margin-bottom:14px;
 }
 
 .project-content p{
   color:var(--soft);
+
   font-size:13px;
 }
 
@@ -738,167 +1136,244 @@ section{
 
 .project-tech{
   display:flex;
+
   gap:7px;
+
   flex-wrap:wrap;
 }
 
 .project-tech span{
-  color:var(--gold2);
-  border:1px solid rgba(215,183,122,.2);
+  color:var(--gold-light);
+
+  border:
+    1px solid
+    rgba(215,183,122,.20);
+
   border-radius:999px;
+
   padding:5px 9px;
+
   font-size:9px;
 }
 
 .project-more{
   margin-top:18px;
+
   color:var(--text);
+
   font-size:11px;
+
   letter-spacing:.08em;
+
   text-transform:uppercase;
 }
 
 
 /* =========================================================
    EDUCATION
-   ========================================================= */
+========================================================= */
 
 .timeline{
   position:relative;
+
   max-width:900px;
+
   margin:auto;
 }
 
 .timeline::before{
   content:"";
+
   position:absolute;
+
   left:16px;
   top:0;
   bottom:0;
+
   width:1px;
-  background:linear-gradient(
-    var(--gold),
-    rgba(215,183,122,.05)
-  );
+
+  background:
+    linear-gradient(
+      var(--gold),
+      rgba(215,183,122,.05)
+    );
 }
 
 .timeline-item{
   position:relative;
+
   padding-left:65px;
+
   padding-bottom:55px;
+}
+
+.timeline-item:last-child{
+  padding-bottom:0;
 }
 
 .timeline-dot{
   position:absolute;
+
   left:10px;
   top:5px;
+
   width:13px;
   height:13px;
-  border:2px solid var(--gold);
+
+  border:
+    2px solid
+    var(--gold);
+
   border-radius:50%;
+
   background:var(--bg);
 }
 
 .timeline-date{
   color:var(--gold);
+
   font-size:10px;
+
   letter-spacing:.2em;
+
   text-transform:uppercase;
+
   margin-bottom:8px;
 }
 
 .timeline-card{
-  border:1px solid var(--white-line);
+  border:
+    1px solid
+    var(--white-line);
+
   background:var(--surface);
+
   border-radius:20px;
+
   padding:25px;
 }
 
 .timeline-card h3{
-  font:26px "Playfair Display",serif;
+  font:
+    26px
+    "Playfair Display",serif;
 }
 
 .timeline-card h4{
   color:#ddd5ca;
+
   font-size:13px;
+
   margin-top:4px;
 }
 
 .timeline-card p{
   color:var(--soft);
+
   font-size:13px;
+
   margin-top:9px;
 }
 
 
 /* =========================================================
-   BEYOND THE CODE
-   ========================================================= */
+   BEYOND
+========================================================= */
 
 .achievements{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:18px;
 }
 
 .achievement-card{
   padding:27px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   border-radius:22px;
+
   background:var(--surface);
 }
 
 .achievement-card .mini{
   color:var(--gold);
+
   font-size:9px;
+
   letter-spacing:.2em;
+
   text-transform:uppercase;
 }
 
 .achievement-card h3{
-  font:25px "Playfair Display",serif;
+  font:
+    25px
+    "Playfair Display",serif;
+
   margin:10px 0 8px;
 }
 
 .achievement-card p{
   color:var(--soft);
+
   font-size:13px;
 }
 
 .beyond{
   margin-top:18px;
+
   padding:35px;
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:26px;
-  border:1px solid var(--line);
+
   background:
     radial-gradient(
       circle at 85% 50%,
-      rgba(215,183,122,.1),
+      rgba(215,183,122,.10),
       transparent 35%
     ),
     var(--surface);
 }
 
 .beyond h3{
-  font:31px "Playfair Display",serif;
+  font:
+    31px
+    "Playfair Display",serif;
+
   margin-bottom:10px;
 }
 
 .beyond p{
   max-width:750px;
+
   color:var(--soft);
+
   font-size:14px;
 }
 
 
 /* =========================================================
    CONTACT
-   ========================================================= */
+========================================================= */
 
 .contact-wrap{
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:32px;
+
   padding:clamp(30px,6vw,70px);
+
   background:
     radial-gradient(
       circle at 80% 20%,
@@ -910,48 +1385,73 @@ section{
       rgba(255,255,255,.06),
       rgba(255,255,255,.015)
     );
+
   display:grid;
+
   grid-template-columns:1fr .8fr;
+
   gap:70px;
 }
 
 .contact-wrap h2{
-  font:clamp(42px,5vw,70px)/1 "Playfair Display",serif;
+  font:
+    clamp(42px,5vw,70px)
+    / 1
+    "Playfair Display",serif;
+
   letter-spacing:-.05em;
 }
 
 .contact-wrap h2 span{
-  color:var(--gold2);
+  color:var(--gold-light);
 }
 
 .contact-copy{
   color:var(--soft);
+
   font-size:14px;
+
   margin-top:18px;
+
   max-width:500px;
 }
 
 .contact-links{
   display:flex;
+
   flex-direction:column;
+
   gap:10px;
 }
 
 .contact-link{
   padding:17px 18px;
-  border:1px solid var(--white-line);
+
+  border:
+    1px solid
+    var(--white-line);
+
   border-radius:15px;
+
   background:rgba(255,255,255,.025);
+
   display:flex;
+
   justify-content:space-between;
+
   color:var(--soft);
+
   font-size:12px;
+
   transition:.25s;
 }
 
 .contact-link:hover{
   transform:translateX(5px);
-  border-color:rgba(215,183,122,.35);
+
+  border-color:
+    rgba(215,183,122,.35);
+
   color:var(--text);
 }
 
@@ -962,97 +1462,131 @@ section{
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer{
   padding:55px 0 30px;
-  border-top:1px solid var(--white-line);
+
+  border-top:
+    1px solid
+    var(--white-line);
 }
 
 .footer-top{
   display:flex;
+
   align-items:flex-end;
+
   justify-content:space-between;
+
   gap:30px;
 }
 
 .footer-signature{
-  font:clamp(27px,4vw,44px)/1.05 "Playfair Display",serif;
+  font:
+    clamp(27px,4vw,44px)
+    / 1.05
+    "Playfair Display",serif;
 }
 
 .footer-signature span{
-  color:var(--gold2);
+  color:var(--gold-light);
 }
 
 .footer-nav{
   display:flex;
+
   flex-wrap:wrap;
+
   gap:18px;
 }
 
 .footer-nav a{
   color:var(--soft);
+
   font-size:11px;
 }
 
 .footer-bottom{
   margin-top:45px;
+
   padding-top:18px;
-  border-top:1px solid var(--white-line);
+
+  border-top:
+    1px solid
+    var(--white-line);
+
   display:flex;
+
   justify-content:space-between;
+
   color:var(--muted);
+
   font-size:10px;
 }
 
 
 /* =========================================================
-   CURSOR
-   ========================================================= */
+   CURSOR GLOW
+========================================================= */
 
 .cursor-glow{
   position:fixed;
+
   width:220px;
   height:220px;
+
   border-radius:50%;
+
   background:
     radial-gradient(
       circle,
       rgba(215,183,122,.07),
       transparent 65%
     );
+
   transform:translate(-50%,-50%);
+
   pointer-events:none;
-  z-index:2;
+
+  z-index:3;
+
   opacity:0;
 }
 
 
-
-
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width:950px){
-
-  .hero-content{
-    grid-template-columns:1fr;
-    gap:50px;
-  }
-
-  .hero-photo-wrap{
-    justify-self:start;
-    width:min(380px,75vw);
-  }
 
   .hero::after{
     background:
       linear-gradient(
         180deg,
-        rgba(11,11,10,.8),
-        rgba(11,11,10,.72)
+        rgba(11,11,10,.82),
+        rgba(11,11,10,.70)
       );
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+
+    gap:50px;
+
+    min-height:auto;
+
+    padding:
+      70px
+      0
+      90px;
+  }
+
+  .hero-photo-wrap{
+    justify-self:start;
+
+    width:min(380px,75vw);
   }
 
   .projects-grid{
@@ -1068,19 +1602,25 @@ footer{
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width:700px){
 
   :root{
-    --nav:68px;
+    --nav-height:68px;
   }
 
   .container,
   .nav-inner,
-  .hero-content{
-    width:min(100% - 32px,var(--max));
+  .hero-inner{
+    width:min(
+      calc(100% - 32px),
+      var(--max)
+    );
   }
+
+
+  /* Desktop navigation disappears */
 
   nav{
     height:68px;
@@ -1090,22 +1630,57 @@ footer{
     display:none;
   }
 
-  .menu-btn{
-    display:grid;
-    place-items:center;
+
+  /* Side menu button */
+
+  .side-menu-button{
+    display:block;
   }
 
-  section{
-    padding:90px 0;
-  }
+
+  /* Hero */
 
   .hero{
-    padding-top:90px;
     min-height:100svh;
+
+    padding-top:68px;
+  }
+
+  .hero-inner{
+    min-height:calc(100svh - 68px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+    gap:35px;
+
+    padding:
+      60px
+      0
+      70px;
+  }
+
+  .hero::after{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(11,11,10,.80),
+        rgba(11,11,10,.70)
+      );
   }
 
   .hero h1{
-    font-size:clamp(47px,14vw,72px);
+    font-size:
+      clamp(
+        47px,
+        14vw,
+        72px
+      );
   }
 
   .hero-role{
@@ -1118,10 +1693,31 @@ footer{
 
   .hero-photo-wrap{
     width:min(330px,78vw);
+
+    display:none;
+  }
+
+
+  /* Buttons */
+
+  .hero-actions{
+    width:100%;
+  }
+
+  .btn{
+    min-height:54px;
+  }
+
+
+  /* Sections */
+
+  section{
+    padding:90px 0;
   }
 
   .section-head{
     display:block;
+
     margin-bottom:35px;
   }
 
@@ -1129,12 +1725,30 @@ footer{
     margin-top:18px;
   }
 
-  .about-grid,
-  .skills-grid,
-  .achievements{
+
+  /* About */
+
+  .about-grid{
     grid-template-columns:1fr;
+
+    gap:30px;
+  }
+
+  .fact-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  /* Skills */
+
+  .skills-grid{
+    grid-template-columns:1fr;
+
     gap:14px;
   }
+
+
+  /* Projects */
 
   .projects-grid{
     grid-template-columns:1fr;
@@ -1144,24 +1758,51 @@ footer{
     min-height:360px;
   }
 
-  .fact-grid{
-    grid-template-columns:1fr;
+
+  /* Education */
+
+  .timeline-item{
+    padding-left:50px;
   }
+
+
+  /* Beyond */
+
+  .achievements{
+    grid-template-columns:1fr;
+
+    gap:14px;
+  }
+
+  .beyond{
+    padding:27px;
+  }
+
+
+  /* Contact */
 
   .contact-wrap{
     padding:28px 22px;
+
     gap:40px;
   }
+
+
+  /* Footer */
 
   .footer-top,
   .footer-bottom{
     flex-direction:column;
+
     align-items:flex-start;
   }
 
   .footer-bottom{
     gap:7px;
   }
+
+
+  /* Mobile doesn't need cursor/scroll indicator */
 
   .scroll-indicator,
   .cursor-glow{
@@ -1173,7 +1814,7 @@ footer{
 
 /* =========================================================
    REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion:reduce){
 
@@ -1185,7 +1826,9 @@ footer{
   *::before,
   *::after{
     animation-duration:.01ms !important;
+
     animation-iteration-count:1 !important;
+
     transition-duration:.01ms !important;
   }
 
@@ -1195,6 +1838,7 @@ footer{
 
   .reveal{
     opacity:1;
+
     transform:none;
   }
 
@@ -1206,12 +1850,15 @@ footer{
 
 <body>
 
-<!-- =======================================================
+
+<!-- =====================================================
      LOADER
-     ======================================================= -->
+===================================================== -->
 
 <div id="loader">
+
   <div class="loader-inner">
+
     <div class="loader-mark">
       <span>AN</span>
     </div>
@@ -1219,92 +1866,115 @@ footer{
     <div class="loader-text">
       Aditya Nautiyal
     </div>
+
   </div>
+
 </div>
 
 
-<!-- CURSOR EFFECT -->
+<!-- =====================================================
+     CURSOR
+===================================================== -->
 
-<div class="cursor-glow" id="cursorGlow"></div>
+<div
+  class="cursor-glow"
+  id="cursorGlow">
+</div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      NAVIGATION
-     ======================================================= -->
+===================================================== -->
 
 <nav id="navbar">
 
   <div class="nav-inner">
 
-    <a href="#home" class="logo">
+    <a
+      href="#home"
+      class="logo">
       AN<span>.</span>
     </a>
+
 
     <div class="nav-links">
 
       <a href="#home">Home</a>
-
       <a href="#about">About</a>
-
       <a href="#skills">Skills</a>
-
       <a href="#projects">Projects</a>
-
       <a href="#education">Education</a>
-
       <a href="#achievements">Beyond</a>
-
       <a href="#contact">Contact</a>
 
     </div>
-
-    <button
-      class="menu-btn"
-      id="menuBtn"
-      aria-label="Open menu"
-    >
-      ☰
-    </button>
 
   </div>
 
 </nav>
 
 
-<!-- =======================================================
+<!-- =====================================================
+     MOBILE SIDE BUTTON
+===================================================== -->
+
+<button
+  class="side-menu-button"
+  id="sideMenuButton"
+  aria-label="Open navigation">
+
+  <span>Menu</span>
+
+</button>
+
+
+<!-- =====================================================
      MOBILE MENU
-     ======================================================= -->
+===================================================== -->
 
-<div class="mobile-menu" id="mobileMenu">
+<div
+  class="mobile-menu"
+  id="mobileMenu">
 
-  <small>Navigation</small>
+  <button
+    class="mobile-close"
+    id="mobileClose"
+    aria-label="Close navigation">
+
+    ×
+
+  </button>
+
+
+  <small>
+    Navigation
+  </small>
+
 
   <a href="#home">Home</a>
-
   <a href="#about">About</a>
-
   <a href="#skills">Skills</a>
-
   <a href="#projects">Projects</a>
-
   <a href="#education">Education</a>
-
   <a href="#achievements">Beyond</a>
-
   <a href="#contact">Contact</a>
 
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      HERO
-     ======================================================= -->
+===================================================== -->
 
-<header class="hero" id="home">
+<header
+  class="hero"
+  id="home">
+
 
   <canvas id="webgl"></canvas>
 
-  <div class="hero-content">
+
+  <div class="hero-inner">
 
 
     <!-- HERO TEXT -->
@@ -1315,39 +1985,60 @@ footer{
         Computer Science × Creative Technology
       </div>
 
+
       <h1>
-        Curious by nature.<br>
-        <em>Building with technology.</em>
+
+        Curious by nature.
+
+        <br>
+
+        <em>
+          Building with technology.
+        </em>
+
       </h1>
 
+
       <div class="hero-role">
-        <strong>Aditya Nautiyal</strong>
+
+        <strong>
+          Aditya Nautiyal
+        </strong>
+
         · CSE Student
         · Developer
         · Problem Solver
+
       </div>
 
+
       <p class="hero-description">
+
         I’m a Computer Science Engineering student at
         Graphic Era Deemed to be University, exploring
         software, problem solving and technology through
         projects, experiments and continuous learning.
+
       </p>
+
 
       <div class="hero-actions">
 
         <a
           href="#projects"
-          class="btn btn-primary"
-        >
+          class="btn btn-primary">
+
           Explore My Work ↗
+
         </a>
+
 
         <a
           href="#contact"
-          class="btn btn-outline"
-        >
+          class="btn btn-outline">
+
           Let's Connect
+
         </a>
 
       </div>
@@ -1364,8 +2055,8 @@ footer{
         <img
           src="profile.jpg"
           alt="Aditya Nautiyal"
-          class="hero-photo"
-        >
+          class="hero-photo">
+
 
         <div class="photo-label">
           CSE · 2025—2029
@@ -1373,9 +2064,11 @@ footer{
 
       </div>
 
+
       <div class="floating-orb"></div>
 
     </div>
+
 
   </div>
 
@@ -1388,23 +2081,25 @@ footer{
 
   </div>
 
+
 </header>
 
 
-<!-- =======================================================
+<!-- =====================================================
      MAIN
-     ======================================================= -->
+===================================================== -->
 
 <main>
 
 
-<!-- =======================================================
+<!-- =====================================================
      ABOUT
-     ======================================================= -->
+===================================================== -->
 
 <section id="about">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -1415,15 +2110,20 @@ footer{
         </div>
 
         <h2 class="section-title">
-          A little about<br>
+          A little about
+          <br>
           me.
         </h2>
 
       </div>
 
+
       <p class="section-intro">
-        Technology is the direction. Curiosity is the engine.
+
+        Technology is the direction.
+        Curiosity is the engine.
         I’m building my foundation one project at a time.
+
       </p>
 
     </div>
@@ -1435,6 +2135,7 @@ footer{
       <div class="about-large reveal">
 
         I’m learning to turn
+
         <span>
           ideas into things that work.
         </span>
@@ -1445,25 +2146,35 @@ footer{
       <div class="about-copy reveal">
 
         <p>
-          I’m Aditya Nautiyal, a Computer Science Engineering
-          student at Graphic Era Deemed to be University,
-          Dehradun.
+
+          I’m Aditya Nautiyal, a Computer Science
+          Engineering student at Graphic Era Deemed
+          to be University, Dehradun.
+
         </p>
 
-        <p>
-          My current focus is strengthening my programming
-          fundamentals, problem-solving ability and
-          understanding of computer science through
-          practical projects.
-        </p>
 
         <p>
-          I enjoy exploring new technologies, experimenting
-          with ideas and learning by actually building things.
+
+          My current focus is strengthening my
+          programming fundamentals, problem-solving
+          ability and understanding of computer science
+          through practical projects.
+
+        </p>
+
+
+        <p>
+
+          I enjoy exploring new technologies,
+          experimenting with ideas and learning by
+          actually building things.
+
         </p>
 
 
         <div class="fact-grid">
+
 
           <div class="fact">
 
@@ -1516,9 +2227,11 @@ footer{
 
           </div>
 
+
         </div>
 
       </div>
+
 
     </div>
 
@@ -1527,13 +2240,14 @@ footer{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      SKILLS
-     ======================================================= -->
+===================================================== -->
 
 <section id="skills">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -1544,16 +2258,22 @@ footer{
         </div>
 
         <h2 class="section-title">
-          Tools I’m<br>
+
+          Tools I’m
+          <br>
           building with.
+
         </h2>
 
       </div>
 
+
       <p class="section-intro">
+
         A growing technical foundation.
         No artificial percentages—just technologies
         I’m actively learning and using.
+
       </p>
 
     </div>
@@ -1561,8 +2281,6 @@ footer{
 
     <div class="skills-grid">
 
-
-      <!-- PROGRAMMING -->
 
       <article class="skill-card reveal">
 
@@ -1575,25 +2293,24 @@ footer{
         </h3>
 
         <p>
+
           Building programming fundamentals and
           problem-solving ability through practical
           exercises and projects.
+
         </p>
+
 
         <div class="tags">
 
           <span class="tag">C</span>
-
           <span class="tag">C++</span>
-
           <span class="tag">Python</span>
 
         </div>
 
       </article>
 
-
-      <!-- DEVELOPMENT -->
 
       <article class="skill-card reveal">
 
@@ -1606,25 +2323,24 @@ footer{
         </h3>
 
         <p>
+
           Exploring software and web development while
           developing a stronger understanding of how
           digital products work.
+
         </p>
+
 
         <div class="tags">
 
           <span class="tag">HTML</span>
-
           <span class="tag">CSS</span>
-
           <span class="tag">JavaScript</span>
 
         </div>
 
       </article>
 
-
-      <!-- HARDWARE -->
 
       <article class="skill-card reveal">
 
@@ -1637,24 +2353,23 @@ footer{
         </h3>
 
         <p>
+
           Hands-on experimentation with Arduino,
           sensors and physical computing concepts.
+
         </p>
+
 
         <div class="tags">
 
           <span class="tag">Arduino</span>
-
           <span class="tag">Tinkercad</span>
-
           <span class="tag">Sensors</span>
 
         </div>
 
       </article>
 
-
-      <!-- PROBLEM SOLVING -->
 
       <article class="skill-card reveal">
 
@@ -1667,21 +2382,23 @@ footer{
         </h3>
 
         <p>
+
           Developing logical thinking through DSA,
           programming problems and project-based learning.
+
         </p>
+
 
         <div class="tags">
 
           <span class="tag">DSA</span>
-
           <span class="tag">Logic</span>
-
           <span class="tag">Debugging</span>
 
         </div>
 
       </article>
+
 
     </div>
 
@@ -1690,13 +2407,14 @@ footer{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      PROJECTS
-     ======================================================= -->
+===================================================== -->
 
 <section id="projects">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -1707,15 +2425,21 @@ footer{
         </div>
 
         <h2 class="section-title">
-          Things I’ve<br>
+
+          Things I’ve
+          <br>
           built.
+
         </h2>
 
       </div>
 
+
       <p class="section-intro">
+
         Small projects, practical experiments and
         the beginning of a much larger learning journey.
+
       </p>
 
     </div>
@@ -1723,8 +2447,6 @@ footer{
 
     <div class="projects-grid">
 
-
-      <!-- SNAKE -->
 
       <article class="project-card reveal">
 
@@ -1744,14 +2466,17 @@ footer{
         <div class="project-content">
 
           <h3>
-            Snake<br>
+            Snake
+            <br>
             Game
           </h3>
 
           <p>
+
             A classic Snake game developed in C to
             strengthen programming logic, loops,
             conditions and game-state handling.
+
           </p>
 
 
@@ -1760,9 +2485,7 @@ footer{
             <div class="project-tech">
 
               <span>C</span>
-
               <span>Logic</span>
-
               <span>Game Development</span>
 
             </div>
@@ -1777,8 +2500,6 @@ footer{
 
       </article>
 
-
-      <!-- SMART DUSTBIN -->
 
       <article class="project-card reveal">
 
@@ -1798,14 +2519,17 @@ footer{
         <div class="project-content">
 
           <h3>
-            Smart<br>
+            Smart
+            <br>
             Dustbin
           </h3>
 
           <p>
+
             A hardware-focused project exploring
             automation, sensors and practical
             IoT-style problem solving.
+
           </p>
 
 
@@ -1814,9 +2538,7 @@ footer{
             <div class="project-tech">
 
               <span>Arduino</span>
-
               <span>Sensors</span>
-
               <span>IoT</span>
 
             </div>
@@ -1831,8 +2553,6 @@ footer{
 
       </article>
 
-
-      <!-- SOUND DETECTION -->
 
       <article class="project-card reveal">
 
@@ -1852,14 +2572,17 @@ footer{
         <div class="project-content">
 
           <h3>
-            Sound Detection<br>
+            Sound Detection
+            <br>
             LED
           </h3>
 
           <p>
+
             An Arduino project that uses sound detection
             to trigger an LED, combining sensors,
             code and physical output.
+
           </p>
 
 
@@ -1868,9 +2591,7 @@ footer{
             <div class="project-tech">
 
               <span>Arduino</span>
-
               <span>Sensor</span>
-
               <span>Embedded</span>
 
             </div>
@@ -1885,6 +2606,7 @@ footer{
 
       </article>
 
+
     </div>
 
   </div>
@@ -1892,13 +2614,14 @@ footer{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      EDUCATION
-     ======================================================= -->
+===================================================== -->
 
 <section id="education">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -1909,15 +2632,21 @@ footer{
         </div>
 
         <h2 class="section-title">
-          The path<br>
+
+          The path
+          <br>
           so far.
+
         </h2>
 
       </div>
 
+
       <p class="section-intro">
+
         From school foundations to engineering
         and computer science.
+
       </p>
 
     </div>
@@ -1926,8 +2655,6 @@ footer{
     <div class="timeline">
 
 
-      <!-- BTECH -->
-
       <div class="timeline-item reveal">
 
         <div class="timeline-dot"></div>
@@ -1935,6 +2662,7 @@ footer{
         <div class="timeline-date">
           2025 — 2029
         </div>
+
 
         <div class="timeline-card">
 
@@ -1947,17 +2675,17 @@ footer{
           </h4>
 
           <p>
+
             Building foundations in programming,
             computer science, problem solving and
             software development.
+
           </p>
 
         </div>
 
       </div>
 
-
-      <!-- CLASS XII -->
 
       <div class="timeline-item reveal">
 
@@ -1966,6 +2694,7 @@ footer{
         <div class="timeline-date">
           2025
         </div>
+
 
         <div class="timeline-card">
 
@@ -1986,8 +2715,6 @@ footer{
       </div>
 
 
-      <!-- CLASS X -->
-
       <div class="timeline-item reveal">
 
         <div class="timeline-dot"></div>
@@ -1995,6 +2722,7 @@ footer{
         <div class="timeline-date">
           2023
         </div>
+
 
         <div class="timeline-card">
 
@@ -2014,6 +2742,7 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
@@ -2021,13 +2750,14 @@ footer{
 </section>
 
 
-<!-- =======================================================
-     BEYOND THE CODE
-     ======================================================= -->
+<!-- =====================================================
+     BEYOND
+===================================================== -->
 
 <section id="achievements">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -2038,16 +2768,22 @@ footer{
         </div>
 
         <h2 class="section-title">
-          More than<br>
+
+          More than
+          <br>
           just code.
+
         </h2>
 
       </div>
 
+
       <p class="section-intro">
+
         Technology is one part of who I am.
         Curiosity, competition and exploration
         shape the rest.
+
       </p>
 
     </div>
@@ -2055,8 +2791,6 @@ footer{
 
     <div class="achievements">
 
-
-      <!-- SIH -->
 
       <article class="achievement-card reveal">
 
@@ -2069,15 +2803,15 @@ footer{
         </h3>
 
         <p>
+
           Participated in the Smart India Hackathon
           experience, exploring collaborative problem
           solving and innovation.
+
         </p>
 
       </article>
 
-
-      <!-- AWS -->
 
       <article class="achievement-card reveal">
 
@@ -2090,16 +2824,17 @@ footer{
         </h3>
 
         <p>
+
           Participated in AWS Cloud Ignite and explored
           cloud technology and modern computing concepts.
+
         </p>
 
       </article>
 
+
     </div>
 
-
-    <!-- PERSONALITY -->
 
     <div class="beyond reveal">
 
@@ -2108,11 +2843,13 @@ footer{
       </h3>
 
       <p>
+
         I enjoy discovering new things, trying different
         activities and competing in sports. Basketball has
         been one of my favourite ways to develop teamwork
         and discipline, while games, exploration and new
         experiences keep my curiosity active.
+
       </p>
 
 
@@ -2142,23 +2879,23 @@ footer{
 
     </div>
 
+
   </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      CONTACT
-     ======================================================= -->
+===================================================== -->
 
 <section id="contact">
 
   <div class="container">
 
+
     <div class="contact-wrap reveal">
 
-
-      <!-- CONTACT INTRO -->
 
       <div>
 
@@ -2166,17 +2903,25 @@ footer{
           06 / Contact
         </div>
 
+
         <h2>
-          Let’s build<br>
+
+          Let’s build
+          <br>
+
           <span>
             something meaningful.
           </span>
+
         </h2>
 
+
         <p class="contact-copy">
+
           Whether you're interested in a project,
           collaboration, internship opportunity or
           simply want to connect, feel free to reach out.
+
         </p>
 
 
@@ -2184,9 +2929,10 @@ footer{
 
           <a
             href="mailto:adityanautiyal.0000@gmail.com"
-            class="btn btn-primary"
-          >
+            class="btn btn-primary">
+
             Send an Email ↗
+
           </a>
 
         </div>
@@ -2194,17 +2940,21 @@ footer{
       </div>
 
 
-      <!-- SOCIAL LINKS -->
-
       <div class="contact-links">
 
 
         <a
           href="mailto:adityanautiyal.0000@gmail.com"
-          class="contact-link"
-        >
-          <span>Email</span>
-          <span>↗</span>
+          class="contact-link">
+
+          <span>
+            Email
+          </span>
+
+          <span>
+            ↗
+          </span>
+
         </a>
 
 
@@ -2212,10 +2962,16 @@ footer{
           href="https://www.linkedin.com/in/aditya-nautiyal-72a3843ba/"
           target="_blank"
           rel="noopener"
-          class="contact-link"
-        >
-          <span>LinkedIn</span>
-          <span>↗</span>
+          class="contact-link">
+
+          <span>
+            LinkedIn
+          </span>
+
+          <span>
+            ↗
+          </span>
+
         </a>
 
 
@@ -2223,10 +2979,16 @@ footer{
           href="https://github.com/justadi-tya"
           target="_blank"
           rel="noopener"
-          class="contact-link"
-        >
-          <span>GitHub</span>
-          <span>↗</span>
+          class="contact-link">
+
+          <span>
+            GitHub
+          </span>
+
+          <span>
+            ↗
+          </span>
+
         </a>
 
 
@@ -2234,13 +2996,21 @@ footer{
           href="https://www.instagram.com/aditya.nautiyal.04/"
           target="_blank"
           rel="noopener"
-          class="contact-link"
-        >
-          <span>Instagram</span>
-          <span>↗</span>
+          class="contact-link">
+
+          <span>
+            Instagram
+          </span>
+
+          <span>
+            ↗
+          </span>
+
         </a>
 
+
       </div>
+
 
     </div>
 
@@ -2248,23 +3018,26 @@ footer{
 
 </section>
 
+
 </main>
 
 
-<!-- =======================================================
+<!-- =====================================================
      FOOTER
-     ======================================================= -->
+===================================================== -->
 
 <footer>
 
   <div class="container">
+
 
     <div class="footer-top">
 
 
       <div class="footer-signature">
 
-        Curious by nature.<br>
+        Curious by nature.
+        <br>
 
         <span>
           Building with technology.
@@ -2275,31 +3048,15 @@ footer{
 
       <div class="footer-nav">
 
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#skills">
-          Skills
-        </a>
-
-        <a href="#projects">
-          Projects
-        </a>
-
-        <a href="#education">
-          Education
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
 
       </div>
+
 
     </div>
 
@@ -2316,14 +3073,15 @@ footer{
 
     </div>
 
+
   </div>
 
 </footer>
 
 
-<!-- =======================================================
+<!-- =====================================================
      THREE.JS
-     ======================================================= -->
+===================================================== -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -2332,84 +3090,115 @@ footer{
 
 /* =========================================================
    LOADER
-   ========================================================= */
+========================================================= */
 
 window.addEventListener(
   "load",
-  () => {
+  function(){
+
     setTimeout(
-      () => {
-        document
-          .getElementById("loader")
-          .classList.add("hide");
+      function(){
+
+        const loader =
+          document.getElementById("loader");
+
+        if(loader){
+          loader.classList.add("hide");
+        }
+
       },
       650
     );
+
   }
 );
 
 
 /* =========================================================
-   NAVBAR SCROLL EFFECT
-   ========================================================= */
+   NAVBAR
+========================================================= */
 
 const navbar =
   document.getElementById("navbar");
 
 window.addEventListener(
   "scroll",
-  () => {
+  function(){
 
-    navbar.classList.toggle(
-      "scrolled",
-      window.scrollY > 30
-    );
+    if(navbar){
+
+      navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 30
+      );
+
+    }
 
   },
-  { passive:true }
+  {passive:true}
 );
 
 
 /* =========================================================
    MOBILE MENU
-   ========================================================= */
+========================================================= */
 
-const menuBtn =
-  document.getElementById("menuBtn");
+const sideMenuButton =
+  document.getElementById("sideMenuButton");
 
 const mobileMenu =
   document.getElementById("mobileMenu");
 
+const mobileClose =
+  document.getElementById("mobileClose");
 
-menuBtn.addEventListener(
-  "click",
-  () => {
 
-    mobileMenu.classList.toggle("open");
+function openMenu(){
 
-    menuBtn.textContent =
-      mobileMenu.classList.contains("open")
-        ? "×"
-        : "☰";
+  mobileMenu.classList.add("open");
 
-  }
-);
+  document.body.style.overflow="hidden";
+
+}
+
+
+function closeMenu(){
+
+  mobileMenu.classList.remove("open");
+
+  document.body.style.overflow="";
+
+}
+
+
+if(sideMenuButton){
+
+  sideMenuButton.addEventListener(
+    "click",
+    openMenu
+  );
+
+}
+
+
+if(mobileClose){
+
+  mobileClose.addEventListener(
+    "click",
+    closeMenu
+  );
+
+}
 
 
 document
   .querySelectorAll(".mobile-menu a")
   .forEach(
-    (a) => {
+    function(link){
 
-      a.addEventListener(
+      link.addEventListener(
         "click",
-        () => {
-
-          mobileMenu.classList.remove("open");
-
-          menuBtn.textContent = "☰";
-
-        }
+        closeMenu
       );
 
     }
@@ -2417,23 +3206,25 @@ document
 
 
 /* =========================================================
-   SCROLL REVEAL
-   ========================================================= */
+   REVEAL ANIMATION
+========================================================= */
 
 const reveals =
   document.querySelectorAll(".reveal");
 
 
-if ("IntersectionObserver" in window) {
+if(
+  "IntersectionObserver" in window
+){
 
   const observer =
     new IntersectionObserver(
-      entries => {
+      function(entries){
 
         entries.forEach(
-          entry => {
+          function(entry){
 
-            if (entry.isIntersecting) {
+            if(entry.isIntersecting){
 
               entry.target.classList.add(
                 "visible"
@@ -2456,14 +3247,24 @@ if ("IntersectionObserver" in window) {
 
 
   reveals.forEach(
-    el => observer.observe(el)
+    function(element){
+
+      observer.observe(element);
+
+    }
   );
 
 }
-else {
+else{
 
   reveals.forEach(
-    el => el.classList.add("visible")
+    function(element){
+
+      element.classList.add(
+        "visible"
+      );
+
+    }
   );
 
 }
@@ -2471,38 +3272,39 @@ else {
 
 /* =========================================================
    CURSOR GLOW
-   ========================================================= */
+========================================================= */
 
 const cursor =
   document.getElementById("cursorGlow");
 
 
-if (
+if(
+  cursor &&
   window.matchMedia("(pointer:fine)").matches
-) {
+){
 
   window.addEventListener(
     "mousemove",
-    e => {
+    function(event){
 
       cursor.style.left =
-        e.clientX + "px";
+        event.clientX + "px";
 
       cursor.style.top =
-        e.clientY + "px";
+        event.clientY + "px";
 
-      cursor.style.opacity = "1";
+      cursor.style.opacity="1";
 
     },
-    { passive:true }
+    {passive:true}
   );
 
 }
 
 
 /* =========================================================
-   THREE.JS BACKGROUND
-   ========================================================= */
+   THREE.JS WEBGL
+========================================================= */
 
 (function(){
 
@@ -2510,32 +3312,39 @@ if (
     document.getElementById("webgl");
 
 
-  if (
+  if(
     !canvas ||
     !window.THREE ||
     window.matchMedia(
       "(prefers-reduced-motion:reduce)"
     ).matches
-  ) {
+  ){
+
     return;
+
   }
 
 
   let renderer;
 
 
-  try {
+  try{
 
     renderer =
-      new THREE.WebGLRenderer({
-        canvas:canvas,
-        alpha:true,
-        antialias:false,
-        powerPreference:"low-power"
-      });
+      new THREE.WebGLRenderer(
+        {
+          canvas:canvas,
+
+          alpha:true,
+
+          antialias:false,
+
+          powerPreference:"low-power"
+        }
+      );
 
   }
-  catch(e) {
+  catch(error){
 
     return;
 
@@ -2549,76 +3358,75 @@ if (
   const camera =
     new THREE.PerspectiveCamera(
       45,
-      innerWidth / innerHeight,
+      window.innerWidth /
+      window.innerHeight,
       .1,
       100
     );
 
 
-  camera.position.z = 7;
+  camera.position.z=7;
 
 
   const cores =
     navigator.hardwareConcurrency || 4;
 
 
-  const count =
+  const particleCount =
     cores <= 2
-      ? 120
+      ? 100
       : cores <= 4
-        ? 220
-        : 360;
+        ? 180
+        : 300;
 
 
   renderer.setPixelRatio(
     Math.min(
-      devicePixelRatio || 1,
+      window.devicePixelRatio || 1,
       1.25
     )
   );
 
 
   renderer.setSize(
-    innerWidth,
-    innerHeight,
+    window.innerWidth,
+    window.innerHeight,
     false
   );
 
 
-  /* -------------------------------------------------------
-     PARTICLES
-     ------------------------------------------------------- */
+  /* Particles */
 
   const positions =
     new Float32Array(
-      count * 3
+      particleCount * 3
     );
 
 
-  for (
-    let i = 0;
-    i < count;
+  for(
+    let i=0;
+    i<particleCount;
     i++
   ){
 
-    const r =
-      2.2 + Math.random() * 3.5;
+    const radius =
+      2.2 + Math.random()*3.5;
 
-    const a =
-      Math.random() * Math.PI * 2;
-
-
-    positions[i * 3] =
-      Math.cos(a) * r +
-      (Math.random() - .5) * 2;
+    const angle =
+      Math.random()*Math.PI*2;
 
 
-    positions[i * 3 + 1] =
-      (Math.random() - .5) * 5;
+    positions[i*3] =
+      Math.cos(angle)*radius +
+      (Math.random()-.5)*2;
 
 
-    positions[i * 3 + 2] =
-      Math.sin(a) * r - 1.5;
+    positions[i*3+1] =
+      (Math.random()-.5)*5;
+
+
+    positions[i*3+2] =
+      Math.sin(angle)*radius - 1.5;
 
   }
 
@@ -2637,22 +3445,22 @@ if (
 
 
   const particleMaterial =
-    new THREE.PointsMaterial({
+    new THREE.PointsMaterial(
+      {
+        color:0xd7b77a,
 
-      color:0xd7b77a,
+        size:.018,
 
-      size:.018,
+        transparent:true,
 
-      transparent:true,
+        opacity:.42,
 
-      opacity:.42,
+        depthWrite:false,
 
-      depthWrite:false,
-
-      blending:
-        THREE.AdditiveBlending
-
-    });
+        blending:
+          THREE.AdditiveBlending
+      }
+    );
 
 
   const particles =
@@ -2665,9 +3473,7 @@ if (
   scene.add(particles);
 
 
-  /* -------------------------------------------------------
-     OUTER WIREFRAME
-     ------------------------------------------------------- */
+  /* Main wireframe */
 
   const geometry =
     new THREE.IcosahedronGeometry(
@@ -2677,17 +3483,17 @@ if (
 
 
   const material =
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshBasicMaterial(
+      {
+        color:0xd7b77a,
 
-      color:0xd7b77a,
+        wireframe:true,
 
-      wireframe:true,
+        transparent:true,
 
-      transparent:true,
-
-      opacity:.10
-
-    });
+        opacity:.10
+      }
+    );
 
 
   const form =
@@ -2707,30 +3513,25 @@ if (
   scene.add(form);
 
 
-  /* -------------------------------------------------------
-     INNER WIREFRAME
-     ------------------------------------------------------- */
+  /* Inner wireframe */
 
   const inner =
     new THREE.Mesh(
-
       new THREE.IcosahedronGeometry(
         1.05,
         1
       ),
+      new THREE.MeshBasicMaterial(
+        {
+          color:0xf0d7a0,
 
-      new THREE.MeshBasicMaterial({
+          wireframe:true,
 
-        color:0xf0d7a0,
+          transparent:true,
 
-        wireframe:true,
-
-        transparent:true,
-
-        opacity:.055
-
-      })
-
+          opacity:.055
+        }
+      )
     );
 
 
@@ -2742,69 +3543,69 @@ if (
   scene.add(inner);
 
 
-  /* -------------------------------------------------------
-     MOUSE INTERACTION
-     ------------------------------------------------------- */
+  /* Mouse movement */
 
-  let mx = 0;
-  let my = 0;
+  let mouseX=0;
+  let mouseY=0;
 
 
   window.addEventListener(
     "mousemove",
-    e => {
+    function(event){
 
-      mx =
-        e.clientX / innerWidth - .5;
+      mouseX =
+        event.clientX /
+        window.innerWidth -
+        .5;
 
-      my =
-        e.clientY / innerHeight - .5;
+      mouseY =
+        event.clientY /
+        window.innerHeight -
+        .5;
 
     },
-    { passive:true }
+    {passive:true}
   );
 
 
-  /* -------------------------------------------------------
-     ANIMATION
-     ------------------------------------------------------- */
+  /* Animation */
 
-  let last = 0;
+  let lastFrame=0;
 
 
-  function animate(t){
+  function animate(time){
 
     requestAnimationFrame(
       animate
     );
 
 
-    if (t - last < 30) {
+    if(
+      time-lastFrame < 30
+    ){
+
       return;
+
     }
 
 
-    last = t;
+    lastFrame=time;
 
 
     form.rotation.x += .0008;
-
     form.rotation.y += .0012;
 
-
     inner.rotation.x -= .0005;
-
     inner.rotation.y -= .0008;
-
 
     particles.rotation.y += .00025;
 
 
     form.rotation.x +=
-      my * .0008;
+      mouseY*.0008;
 
     form.rotation.y +=
-      mx * .0008;
+      mouseX*.0008;
 
 
     renderer.render(
@@ -2820,28 +3621,27 @@ if (
   );
 
 
-  /* -------------------------------------------------------
-     RESIZE
-     ------------------------------------------------------- */
+  /* Resize */
 
   window.addEventListener(
     "resize",
-    () => {
+    function(){
 
       camera.aspect =
-        innerWidth / innerHeight;
+        window.innerWidth /
+        window.innerHeight;
 
       camera.updateProjectionMatrix();
 
 
       renderer.setSize(
-        innerWidth,
-        innerHeight,
+        window.innerWidth,
+        window.innerHeight,
         false
       );
 
     },
-    { passive:true }
+    {passive:true}
   );
 
 
