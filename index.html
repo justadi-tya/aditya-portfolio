@@ -6,10 +6,10 @@
 
 <title>Aditya Nautiyal | Computer Science Student</title>
 
-<meta name="description" content="Portfolio of Aditya Nautiyal - Computer Science Engineering student, developer and problem solver.">
+<meta name="description"
+content="Portfolio of Aditya Nautiyal - Computer Science Engineering student, developer and problem solver.">
 
 <style>
-
 /* =========================
    RESET
 ========================= */
@@ -18,27 +18,27 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    scroll-behavior:smooth;
 }
 
-:root{
-    --bg:#050816;
-    --bg2:#0a1024;
-    --card:rgba(15,23,42,.65);
-    --border:rgba(148,163,184,.15);
-    --text:#f8fafc;
-    --muted:#94a3b8;
-    --blue:#60a5fa;
-    --cyan:#22d3ee;
-    --purple:#a78bfa;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:#06070b;
+    color:#f4f7ff;
     line-height:1.6;
     overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
 }
 
 /* =========================
@@ -48,13 +48,13 @@ body{
 body::before{
     content:"";
     position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(37,99,235,.15);
-    filter:blur(120px);
+    width:600px;
+    height:600px;
     border-radius:50%;
-    top:-200px;
-    left:-150px;
+    background:rgba(0,212,255,.07);
+    filter:blur(100px);
+    top:-250px;
+    left:-250px;
     z-index:-2;
 }
 
@@ -63,12 +63,24 @@ body::after{
     position:fixed;
     width:500px;
     height:500px;
-    background:rgba(124,58,237,.12);
-    filter:blur(120px);
     border-radius:50%;
-    bottom:-200px;
-    right:-150px;
+    background:rgba(92,70,255,.08);
+    filter:blur(100px);
+    right:-200px;
+    bottom:-150px;
     z-index:-2;
+}
+
+.grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    opacity:.16;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
 }
 
 /* =========================
@@ -77,50 +89,58 @@ body::after{
 
 nav{
     position:fixed;
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1100px,92%);
+    top:0;
+    left:0;
+    width:100%;
     z-index:1000;
-
-    background:rgba(5,8,22,.72);
+    background:rgba(6,7,11,.72);
     backdrop-filter:blur(18px);
-    border:1px solid var(--border);
-    border-radius:18px;
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
 .nav-container{
+    max-width:1180px;
+    margin:auto;
+    height:76px;
+    padding:0 24px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:15px 22px;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:21px;
+    font-size:24px;
     font-weight:800;
     letter-spacing:-1px;
 }
 
 .logo span{
-    color:var(--blue);
+    color:#00d9ff;
 }
 
-nav ul{
-    list-style:none;
+.nav-links{
     display:flex;
-    gap:25px;
+    gap:30px;
+    list-style:none;
 }
 
-nav a{
-    text-decoration:none;
-    color:#cbd5e1;
+.nav-links a{
     font-size:14px;
-    transition:.3s;
+    color:#aab2c4;
+    transition:.25s;
 }
 
-nav a:hover{
-    color:var(--blue);
+.nav-links a:hover{
+    color:#00d9ff;
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
 }
 
 /* =========================
@@ -128,8 +148,9 @@ nav a:hover{
 ========================= */
 
 .container{
-    width:min(1100px,90%);
+    max-width:1180px;
     margin:auto;
+    padding:0 24px;
 }
 
 section{
@@ -137,24 +158,23 @@ section{
 }
 
 .section-label{
-    color:var(--blue);
+    color:#00d9ff;
     font-size:13px;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:3px;
-    margin-bottom:10px;
-    font-weight:bold;
+    margin-bottom:12px;
 }
 
 .section-title{
     font-size:42px;
-    margin-bottom:15px;
     letter-spacing:-1.5px;
+    margin-bottom:18px;
 }
 
 .section-description{
-    color:var(--muted);
+    color:#929bad;
     max-width:650px;
-    margin-bottom:45px;
 }
 
 /* =========================
@@ -163,69 +183,71 @@ section{
 
 .hero{
     min-height:100vh;
+    padding-top:130px;
     display:flex;
     align-items:center;
     position:relative;
-    padding-top:130px;
 }
 
 .hero-content{
-    max-width:800px;
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    align-items:center;
+    gap:70px;
 }
 
 .status{
     display:inline-flex;
     align-items:center;
     gap:9px;
-
     padding:8px 14px;
+    border:1px solid rgba(0,217,255,.2);
+    background:rgba(0,217,255,.05);
     border-radius:50px;
-
-    background:rgba(96,165,250,.08);
-    border:1px solid rgba(96,165,250,.2);
-
-    color:#bfdbfe;
+    color:#8deaff;
     font-size:13px;
-    margin-bottom:25px;
+    margin-bottom:24px;
 }
 
 .status-dot{
     width:8px;
     height:8px;
-    background:#34d399;
     border-radius:50%;
-    box-shadow:0 0 12px #34d399;
+    background:#00e5ff;
+    box-shadow:0 0 15px #00e5ff;
 }
 
 .hero h1{
-    font-size:clamp(48px,8vw,82px);
-    line-height:1.05;
+    font-size:clamp(48px,7vw,82px);
+    line-height:1.02;
     letter-spacing:-4px;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
-.gradient-text{
-    background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+.hero h1 .gradient{
+    background:linear-gradient(90deg,#00d9ff,#6f7cff,#b36cff);
     -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    color:transparent;
 }
 
-.hero-subtitle{
-    font-size:24px;
-    color:#cbd5e1;
+.hero-role{
+    font-size:23px;
+    font-weight:600;
+    color:#d8ddec;
     margin-bottom:20px;
 }
 
-.hero-description{
-    max-width:680px;
-    color:var(--muted);
-    font-size:17px;
+.hero-text{
+    color:#929bad;
+    font-size:16px;
+    max-width:650px;
+    margin-bottom:32px;
 }
 
 .hero-buttons{
-    margin-top:35px;
     display:flex;
-    gap:15px;
+    gap:14px;
     flex-wrap:wrap;
 }
 
@@ -233,61 +255,113 @@ section{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
     padding:13px 22px;
     border-radius:10px;
-
-    text-decoration:none;
-    font-weight:bold;
     font-size:14px;
-
+    font-weight:700;
+    border:1px solid rgba(255,255,255,.12);
     transition:.3s;
 }
 
 .btn-primary{
-    color:white;
-    background:linear-gradient(135deg,#2563eb,#4f46e5);
-    box-shadow:0 10px 30px rgba(37,99,235,.25);
+    background:linear-gradient(135deg,#00d9ff,#5478ff);
+    color:#041016;
+    border:none;
+    box-shadow:0 10px 35px rgba(0,217,255,.16);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(0,217,255,.25);
 }
 
 .btn-secondary{
-    color:#cbd5e1;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.03);
+    background:rgba(255,255,255,.035);
+    color:#e8ebf5;
 }
 
-.btn:hover{
+.btn-secondary:hover{
+    border-color:#00d9ff;
+    color:#00d9ff;
     transform:translateY(-3px);
 }
 
 /* =========================
-   STATS
+   PROFILE
 ========================= */
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-top:70px;
+.profile-wrap{
+    display:flex;
+    justify-content:center;
+    position:relative;
 }
 
-.stat{
-    padding:22px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
-    backdrop-filter:blur(10px);
+.profile-card{
+    width:350px;
+    height:430px;
+    padding:10px;
+    border-radius:30px;
+    background:linear-gradient(145deg,
+        rgba(0,217,255,.5),
+        rgba(111,124,255,.15),
+        rgba(255,255,255,.05));
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.5),
+        0 0 80px rgba(0,217,255,.08);
+    transform:rotate(2deg);
+    transition:.4s;
 }
 
-.stat-number{
-    font-size:28px;
-    font-weight:800;
-    color:white;
+.profile-card:hover{
+    transform:rotate(0deg) translateY(-8px);
 }
 
-.stat-text{
-    color:var(--muted);
-    font-size:13px;
+.profile-inner{
+    height:100%;
+    overflow:hidden;
+    border-radius:23px;
+    background:#10131b;
+    position:relative;
+}
+
+.profile-inner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    display:block;
+}
+
+.profile-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(3,5,9,.75),
+        transparent 50%
+    );
+}
+
+.profile-tag{
+    position:absolute;
+    bottom:22px;
+    left:22px;
+    right:22px;
+    padding:13px 15px;
+    border-radius:13px;
+    background:rgba(5,7,12,.72);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(12px);
+}
+
+.profile-tag strong{
+    display:block;
+    font-size:14px;
+}
+
+.profile-tag span{
+    color:#9ca5b8;
+    font-size:12px;
 }
 
 /* =========================
@@ -296,59 +370,55 @@ section{
 
 .about-grid{
     display:grid;
-    grid-template-columns:1.3fr .7fr;
+    grid-template-columns:1fr 1fr;
     gap:25px;
+    margin-top:45px;
 }
 
-.glass-card{
-    background:var(--card);
-    border:1px solid var(--border);
+.glass{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:20px;
-    padding:30px;
-    backdrop-filter:blur(15px);
+    padding:28px;
+    backdrop-filter:blur(12px);
 }
 
-.about-text p{
-    color:#cbd5e1;
-    margin-bottom:17px;
+.glass h3{
+    font-size:20px;
+    margin-bottom:12px;
 }
 
-.about-highlight{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:18px;
-    border-radius:14px;
-    background:rgba(96,165,250,.06);
-    border:1px solid rgba(96,165,250,.12);
-    margin-top:20px;
+.glass p{
+    color:#929bad;
+    font-size:14px;
 }
 
-.highlight-icon{
-    font-size:25px;
-}
-
-.about-info{
-    display:flex;
-    flex-direction:column;
+.info-list{
+    display:grid;
     gap:15px;
 }
 
 .info-item{
-    padding:18px;
-    border-radius:14px;
-    background:rgba(255,255,255,.025);
-    border:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding-bottom:13px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:14px;
 }
 
-.info-item small{
-    color:var(--muted);
-    display:block;
-    margin-bottom:3px;
+.info-item:last-child{
+    border-bottom:0;
+    padding-bottom:0;
 }
 
-.info-item strong{
-    color:#e2e8f0;
+.info-item span:first-child{
+    color:#777f91;
+}
+
+.info-item span:last-child{
+    color:#e7eaf2;
+    text-align:right;
 }
 
 /* =========================
@@ -356,39 +426,47 @@ section{
 ========================= */
 
 .skills-grid{
+    margin-top:45px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+    gap:16px;
 }
 
-.skill-card{
-    padding:22px;
-    text-align:center;
-    border-radius:16px;
-    background:var(--card);
-    border:1px solid var(--border);
+.skill{
+    padding:24px;
+    border-radius:18px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.07);
     transition:.3s;
 }
 
-.skill-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(96,165,250,.4);
-    background:rgba(30,41,59,.7);
+.skill:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,217,255,.35);
+    background:rgba(0,217,255,.035);
 }
 
 .skill-icon{
-    font-size:30px;
-    margin-bottom:10px;
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:rgba(0,217,255,.08);
+    color:#00d9ff;
+    font-weight:800;
+    margin-bottom:15px;
 }
 
-.skill-card h3{
-    font-size:15px;
+.skill h3{
+    font-size:16px;
+    margin-bottom:5px;
 }
 
-.skill-card p{
+.skill p{
+    color:#7f889a;
     font-size:12px;
-    color:var(--muted);
-    margin-top:4px;
 }
 
 /* =========================
@@ -396,63 +474,73 @@ section{
 ========================= */
 
 .projects-grid{
+    margin-top:45px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:20px;
 }
 
 .project{
+    padding:28px;
+    border-radius:20px;
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.018));
+    border:1px solid rgba(255,255,255,.08);
+    transition:.35s;
     position:relative;
     overflow:hidden;
+}
 
-    background:linear-gradient(
-        145deg,
-        rgba(15,23,42,.8),
-        rgba(15,23,42,.45)
-    );
-
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:28px;
-
-    transition:.35s;
+.project::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(0,217,255,.07);
+    filter:blur(50px);
+    right:-70px;
+    top:-70px;
 }
 
 .project:hover{
     transform:translateY(-7px);
-    border-color:rgba(96,165,250,.35);
+    border-color:rgba(0,217,255,.3);
 }
 
 .project-number{
-    color:#475569;
-    font-size:13px;
-    font-weight:bold;
+    font-size:12px;
+    color:#00d9ff;
+    font-weight:800;
+    letter-spacing:2px;
 }
 
 .project h3{
     font-size:22px;
-    margin:12px 0;
+    margin:13px 0 10px;
 }
 
 .project p{
-    color:var(--muted);
+    color:#8d96a8;
     font-size:14px;
+    margin-bottom:20px;
 }
 
-.project-tags{
+.tags{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-top:20px;
 }
 
 .tag{
     padding:6px 10px;
-    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:7px;
+    color:#b7bfd0;
     font-size:11px;
-    color:#bfdbfe;
-    background:rgba(96,165,250,.08);
-    border:1px solid rgba(96,165,250,.12);
 }
 
 /* =========================
@@ -460,57 +548,46 @@ section{
 ========================= */
 
 .timeline{
-    position:relative;
-    max-width:850px;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:8px;
-    top:0;
-    bottom:0;
-    width:1px;
-    background:#334155;
+    margin-top:45px;
+    border-left:1px solid rgba(0,217,255,.25);
+    margin-left:8px;
 }
 
 .timeline-item{
     position:relative;
-    padding-left:40px;
-    margin-bottom:35px;
+    padding:0 0 35px 30px;
 }
 
-.timeline-dot{
-    position:absolute;
-    left:3px;
-    top:6px;
+.timeline-item:last-child{
+    padding-bottom:0;
+}
 
+.timeline-item::before{
+    content:"";
+    position:absolute;
     width:11px;
     height:11px;
-
     border-radius:50%;
-    background:var(--blue);
-    box-shadow:0 0 15px rgba(96,165,250,.6);
+    background:#00d9ff;
+    box-shadow:0 0 15px rgba(0,217,255,.7);
+    left:-6px;
+    top:5px;
 }
 
-.timeline-card{
-    padding:24px;
-    border-radius:17px;
-    background:var(--card);
-    border:1px solid var(--border);
-}
-
-.timeline-card span{
+.timeline-year{
+    color:#00d9ff;
     font-size:12px;
-    color:var(--blue);
+    font-weight:700;
+    letter-spacing:1px;
 }
 
-.timeline-card h3{
-    margin:5px 0;
+.timeline-item h3{
+    font-size:20px;
+    margin:6px 0;
 }
 
-.timeline-card p{
-    color:var(--muted);
+.timeline-item p{
+    color:#8992a4;
     font-size:14px;
 }
 
@@ -518,91 +595,76 @@ section{
    ACHIEVEMENTS
 ========================= */
 
-.achievement-grid{
+.achievements{
+    margin-top:45px;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:18px;
 }
 
 .achievement{
-    padding:25px;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.07);
     border-radius:18px;
-    background:var(--card);
-    border:1px solid var(--border);
-}
-
-.achievement-icon{
-    font-size:28px;
-    margin-bottom:15px;
+    background:rgba(255,255,255,.03);
 }
 
 .achievement h3{
-    margin-bottom:8px;
+    font-size:17px;
+    margin-bottom:6px;
 }
 
 .achievement p{
-    color:var(--muted);
+    color:#8992a4;
     font-size:13px;
-}
-
-/* =========================
-   GITHUB CTA
-========================= */
-
-.github-box{
-    text-align:center;
-    padding:55px 30px;
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37,99,235,.12),
-            rgba(124,58,237,.1)
-        );
-
-    border:1px solid var(--border);
-}
-
-.github-box h2{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.github-box p{
-    color:var(--muted);
-    max-width:600px;
-    margin:auto;
 }
 
 /* =========================
    CONTACT
 ========================= */
 
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.contact-box{
+    margin-top:45px;
+    text-align:center;
+    padding:60px 25px;
+    border-radius:25px;
+    border:1px solid rgba(0,217,255,.15);
+    background:
+        radial-gradient(circle at center,
+        rgba(0,217,255,.08),
+        rgba(255,255,255,.02) 50%);
 }
 
-.contact-card{
-    padding:28px;
-    border-radius:18px;
-    background:var(--card);
-    border:1px solid var(--border);
+.contact-box h2{
+    font-size:38px;
+    margin-bottom:12px;
 }
 
-.contact-card h3{
-    margin-bottom:10px;
+.contact-box p{
+    color:#929bad;
+    max-width:600px;
+    margin:0 auto 25px;
 }
 
-.contact-card p{
-    color:var(--muted);
+.socials{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-.contact-link{
-    color:var(--blue);
-    text-decoration:none;
+.social{
+    padding:10px 15px;
+    border-radius:9px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.035);
+    font-size:13px;
+    transition:.25s;
+}
+
+.social:hover{
+    color:#00d9ff;
+    border-color:#00d9ff;
 }
 
 /* =========================
@@ -610,120 +672,147 @@ section{
 ========================= */
 
 footer{
-    border-top:1px solid var(--border);
-    padding:30px 0;
+    border-top:1px solid rgba(255,255,255,.07);
+    padding:28px 0;
+    color:#697184;
+    font-size:12px;
     text-align:center;
-    color:#64748b;
-    font-size:13px;
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-.hero-content{
-    animation:float 6s ease-in-out infinite;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
-    nav ul{
-        display:none;
+    .hero-content{
+        grid-template-columns:1fr;
+        gap:50px;
     }
 
-    .stats{
+    .profile-wrap{
+        order:-1;
+    }
+
+    .profile-card{
+        width:280px;
+        height:340px;
+    }
+
+    .skills-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
     .about-grid{
         grid-template-columns:1fr;
     }
-
-    .skills-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .projects-grid{
-        grid-template-columns:1fr;
-    }
-
-    .achievement-grid{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
 }
 
-@media(max-width:500px){
+@media(max-width:700px){
 
     section{
         padding:80px 0;
     }
 
-    .hero h1{
-        letter-spacing:-2px;
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+        background:rgba(6,7,11,.96);
+        border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .stats{
-        grid-template-columns:1fr 1fr;
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-2.5px;
+    }
+
+    .hero-role{
+        font-size:19px;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+
+    .projects-grid,
+    .achievements{
+        grid-template-columns:1fr;
     }
 
     .skills-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .section-title{
-        font-size:34px;
+    .contact-box h2{
+        font-size:30px;
     }
 }
 
+@media(max-width:430px){
+
+    .skills-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .profile-card{
+        width:250px;
+        height:310px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="grid-bg"></div>
 
 <!-- =========================
      NAVIGATION
 ========================= -->
 
 <nav>
+    <div class="nav-container">
 
-<div class="nav-container">
+        <a href="#home" class="logo">
+            Aditya<span>.</span>
+        </a>
 
-<div class="logo">
-Aditya<span>.</span>
-</div>
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
 
-<ul>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
 
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-</div>
-
+    </div>
 </nav>
 
 
@@ -731,73 +820,74 @@ Aditya<span>.</span>
      HERO
 ========================= -->
 
-<section id="home" class="hero">
+<section class="hero" id="home">
 
-<div class="container">
+    <div class="container">
 
-<div class="hero-content">
+        <div class="hero-content">
 
-<div class="status">
-<span class="status-dot"></span>
-Available for learning & collaboration
-</div>
+            <div>
 
-<h1>
-Hi, I'm
-<br>
-<span class="gradient-text">Aditya Nautiyal.</span>
-</h1>
+                <div class="status">
+                    <span class="status-dot"></span>
+                    Available for learning & collaboration
+                </div>
 
-<div class="hero-subtitle">
-Computer Science Engineering Student
-</div>
+                <h1>
+                    Hi, I'm<br>
+                    <span class="gradient">Aditya Nautiyal.</span>
+                </h1>
 
-<p class="hero-description">
-I build projects, solve programming problems and continuously
-strengthen my foundations in computer science, software development
-and emerging technologies.
-</p>
+                <div class="hero-role">
+                    Computer Science Engineering Student
+                </div>
 
-<div class="hero-buttons">
+                <p class="hero-text">
+                    I build projects, solve programming problems and
+                    continuously strengthen my foundations in computer
+                    science, software development and emerging technologies.
+                </p>
 
-<a href="#projects" class="btn btn-primary">
-Explore My Work →
-</a>
+                <div class="hero-buttons">
 
-<a href="#contact" class="btn btn-secondary">
-Let's Connect
-</a>
+                    <a href="#projects" class="btn btn-primary">
+                        Explore My Work →
+                    </a>
 
-</div>
+                    <a href="#contact" class="btn btn-secondary">
+                        Let's Connect
+                    </a>
+
+                </div>
+
+            </div>
 
 
-<div class="stats">
+            <div class="profile-wrap">
 
-<div class="stat">
-<div class="stat-number">C/C++</div>
-<div class="stat-text">Programming</div>
-</div>
+                <div class="profile-card">
 
-<div class="stat">
-<div class="stat-number">Python</div>
-<div class="stat-text">Development</div>
-</div>
+                    <div class="profile-inner">
 
-<div class="stat">
-<div class="stat-number">DSA</div>
-<div class="stat-text">Currently Learning</div>
-</div>
+                        <img src="profile.jpg"
+                             alt="Aditya Nautiyal">
 
-<div class="stat">
-<div class="stat-number">2029</div>
-<div class="stat-text">Graduation</div>
-</div>
+                        <div class="profile-overlay"></div>
 
-</div>
+                        <div class="profile-tag">
+                            <strong>Aditya Nautiyal</strong>
+                            <span>CSE Student • Developer • Learner</span>
+                        </div>
 
-</div>
+                    </div>
 
-</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -808,84 +898,84 @@ Let's Connect
 
 <section id="about">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">01 — About</div>
+        <div class="section-label">01 / About</div>
 
-<h2 class="section-title">
-A little about me
-</h2>
+        <h2 class="section-title">
+            Building my foundation in tech.
+        </h2>
 
-<p class="section-description">
-A computer science student focused on learning by building.
-</p>
-
-
-<div class="about-grid">
-
-<div class="glass-card about-text">
-
-<p>
-I'm Aditya Nautiyal, a Computer Science Engineering student
-at Graphic Era Deemed to be University, Dehradun.
-</p>
-
-<p>
-My interest lies in programming, problem solving and understanding
-how software works from the fundamentals. I am currently developing
-my skills in C, C++, Python and Data Structures & Algorithms.
-</p>
-
-<p>
-I enjoy turning ideas into practical projects and participating
-in technology-based activities that allow me to learn through
-real-world problem solving.
-</p>
-
-<div class="about-highlight">
-
-<div class="highlight-icon">💡</div>
-
-<div>
-<strong>Learning philosophy</strong>
-<br>
-<span style="color:#94a3b8;font-size:13px;">
-Learn → Build → Experiment → Improve
-</span>
-</div>
-
-</div>
-
-</div>
+        <p class="section-description">
+            I'm a Computer Science Engineering student interested in
+            programming, problem solving and building practical projects.
+            My current focus is strengthening my fundamentals while
+            exploring software development and emerging technologies.
+        </p>
 
 
-<div class="about-info">
+        <div class="about-grid">
 
-<div class="info-item">
-<small>University</small>
-<strong>Graphic Era Deemed to be University</strong>
-</div>
+            <div class="glass">
 
-<div class="info-item">
-<small>Degree</small>
-<strong>B.Tech — Computer Science Engineering</strong>
-</div>
+                <h3>Who I Am</h3>
 
-<div class="info-item">
-<small>Academic Journey</small>
-<strong>2025 — 2029</strong>
-</div>
+                <p>
+                    I enjoy turning ideas into working projects and
+                    learning by building. From C programming and DSA to
+                    Python, databases and hardware-based projects,
+                    I am continuously expanding my technical skill set.
+                </p>
 
-<div class="info-item">
-<small>Location</small>
-<strong>Dehradun, Uttarakhand</strong>
-</div>
+                <br>
 
-</div>
+                <p>
+                    I believe strong fundamentals, consistent practice
+                    and curiosity are the foundation of becoming a
+                    better developer.
+                </p>
 
-</div>
+            </div>
 
-</div>
+
+            <div class="glass">
+
+                <h3>Quick Information</h3>
+
+                <div class="info-list">
+
+                    <div class="info-item">
+                        <span>Name</span>
+                        <span>Aditya Nautiyal</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Degree</span>
+                        <span>B.Tech CSE</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span>University</span>
+                        <span>Graphic Era Deemed University</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Graduation</span>
+                        <span>2029</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Interests</span>
+                        <span>Coding • DSA • Problem Solving</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -896,72 +986,73 @@ Learn → Build → Experiment → Improve
 
 <section id="skills">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">02 — Skills</div>
+        <div class="section-label">02 / Skills</div>
 
-<h2 class="section-title">
-Tools & technologies
-</h2>
+        <h2 class="section-title">
+            Technologies I'm learning.
+        </h2>
 
-<p class="section-description">
-Technologies and concepts I am learning and working with.
-</p>
+        <p class="section-description">
+            A growing toolkit built through coursework, projects and
+            hands-on experimentation.
+        </p>
 
 
-<div class="skills-grid">
+        <div class="skills-grid">
 
-<div class="skill-card">
-<div class="skill-icon">C</div>
-<h3>C Programming</h3>
-<p>Foundational</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">C</div>
+                <h3>C Programming</h3>
+                <p>Foundational programming & problem solving</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">C++</div>
-<h3>C++</h3>
-<p>Fundamentals</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">C++</div>
+                <h3>C++</h3>
+                <p>Programming fundamentals & DSA preparation</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">🐍</div>
-<h3>Python</h3>
-<p>Basic — Intermediate</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">Py</div>
+                <h3>Python</h3>
+                <p>Basic to intermediate development</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">🧠</div>
-<h3>DSA</h3>
-<p>Currently Learning</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">DS</div>
+                <h3>DSA</h3>
+                <p>Data structures & algorithmic thinking</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">🌐</div>
-<h3>HTML & CSS</h3>
-<p>Web Development</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">Web</div>
+                <h3>HTML / CSS</h3>
+                <p>Responsive website development</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">🗄️</div>
-<h3>MySQL</h3>
-<p>Database</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">DB</div>
+                <h3>MySQL</h3>
+                <p>Database fundamentals</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">⚡</div>
-<h3>Arduino</h3>
-<p>Embedded Projects</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">⚙</div>
+                <h3>Arduino</h3>
+                <p>Basic electronics & embedded projects</p>
+            </div>
 
-<div class="skill-card">
-<div class="skill-icon">🔧</div>
-<h3>GitHub</h3>
-<p>Version Control</p>
-</div>
+            <div class="skill">
+                <div class="skill-icon">GH</div>
+                <h3>GitHub</h3>
+                <p>Repositories & project hosting</p>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -972,151 +1063,148 @@ Technologies and concepts I am learning and working with.
 
 <section id="projects">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">03 — Projects</div>
+        <div class="section-label">03 / Projects</div>
 
-<h2 class="section-title">
-Things I've built
-</h2>
+        <h2 class="section-title">
+            Things I've built.
+        </h2>
 
-<p class="section-description">
-A collection of academic and personal projects developed while
-learning programming and technology.
-</p>
-
-
-<div class="projects-grid">
+        <p class="section-description">
+            Practical projects that helped me understand programming,
+            databases, hardware and problem solving.
+        </p>
 
 
-<div class="project">
-
-<div class="project-number">PROJECT 01</div>
-
-<h3>Library Management System</h3>
-
-<p>
-A database-driven library management project developed using
-Python and MySQL during Class 12. Designed to manage library
-records while demonstrating programming and database concepts.
-</p>
-
-<div class="project-tags">
-<span class="tag">Python</span>
-<span class="tag">MySQL</span>
-<span class="tag">Database</span>
-</div>
-
-</div>
+        <div class="projects-grid">
 
 
-<div class="project">
+            <div class="project">
 
-<div class="project-number">PROJECT 02</div>
+                <div class="project-number">PROJECT 01</div>
 
-<h3>Snake Game</h3>
+                <h3>Library Management System</h3>
 
-<p>
-A classic Snake game developed in C during the second semester.
-The project strengthened programming fundamentals, logic building,
-loops, conditions and problem-solving skills.
-</p>
+                <p>
+                    A library management application created during
+                    Class 12 using Python and MySQL to manage library
+                    records and operations.
+                </p>
 
-<div class="project-tags">
-<span class="tag">C</span>
-<span class="tag">Game Logic</span>
-<span class="tag">Programming</span>
-</div>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Database</span>
+                </div>
 
-</div>
-
-
-<div class="project">
-
-<div class="project-number">PROJECT 03</div>
-
-<h3>Smart Dustbin</h3>
-
-<p>
-An Arduino-based project designed around automated waste
-management. The project combines sensors and microcontroller
-programming to create a practical prototype.
-</p>
-
-<div class="project-tags">
-<span class="tag">Arduino</span>
-<span class="tag">Sensors</span>
-<span class="tag">IoT</span>
-</div>
-
-</div>
+            </div>
 
 
-<div class="project">
+            <div class="project">
 
-<div class="project-number">PROJECT 04</div>
+                <div class="project-number">PROJECT 02</div>
 
-<h3>Sound Detection LED</h3>
+                <h3>Snake Game</h3>
 
-<p>
-A first-semester Arduino project that uses sound detection
-to trigger an LED, providing practical experience with sensors,
-electronics and embedded programming.
-</p>
+                <p>
+                    A console-based Snake game developed in C as a
+                    second-semester programming project.
+                </p>
 
-<div class="project-tags">
-<span class="tag">Arduino</span>
-<span class="tag">Electronics</span>
-<span class="tag">Sensors</span>
-</div>
+                <div class="tags">
+                    <span class="tag">C</span>
+                    <span class="tag">Logic</span>
+                    <span class="tag">Game Development</span>
+                </div>
 
-</div>
-
-
-<div class="project">
-
-<div class="project-number">PROJECT 05</div>
-
-<h3>Nest Mate</h3>
-
-<p>
-A Design Thinking prototype website developed around a practical
-digital solution. The project involved ideation, user-focused
-thinking and prototype development.
-</p>
-
-<div class="project-tags">
-<span class="tag">Design Thinking</span>
-<span class="tag">Prototype</span>
-<span class="tag">Web</span>
-</div>
-
-</div>
+            </div>
 
 
-<div class="project">
+            <div class="project">
 
-<div class="project-number">PROJECT 06</div>
+                <div class="project-number">PROJECT 03</div>
 
-<h3>Hackathon Participation</h3>
+                <h3>Smart Dustbin</h3>
 
-<p>
-Participated in technology-focused activities including Smart
-India Hackathon and AWS Cloud Ignite, gaining experience in
-teamwork, innovation and collaborative problem solving.
-</p>
+                <p>
+                    An Arduino-based smart system designed to explore
+                    automation and sensor-based interaction.
+                </p>
 
-<div class="project-tags">
-<span class="tag">Innovation</span>
-<span class="tag">Teamwork</span>
-<span class="tag">Technology</span>
-</div>
+                <div class="tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Sensors</span>
+                    <span class="tag">Automation</span>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
-</div>
+            <div class="project">
+
+                <div class="project-number">PROJECT 04</div>
+
+                <h3>Sound Detection LED</h3>
+
+                <p>
+                    A first-semester Arduino project that uses sound
+                    detection to trigger an LED response.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Electronics</span>
+                    <span class="tag">Sensors</span>
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">PROJECT 05</div>
+
+                <h3>Nest Mate</h3>
+
+                <p>
+                    A Design Thinking prototype website created to
+                    explore user-centered problem solving and digital
+                    product ideas.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Design Thinking</span>
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">PROJECT 06</div>
+
+                <h3>More Projects Coming</h3>
+
+                <p>
+                    Currently learning DSA, strengthening C/C++ fundamentals
+                    and working toward building more advanced software
+                    projects.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">DSA</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Learning</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1127,78 +1215,63 @@ teamwork, innovation and collaborative problem solving.
 
 <section id="education">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">04 — Education</div>
+        <div class="section-label">04 / Education</div>
 
-<h2 class="section-title">
-My academic journey
-</h2>
+        <h2 class="section-title">
+            My academic journey.
+        </h2>
 
-
-<div class="timeline">
-
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-card">
-
-<span>2025 — 2029</span>
-
-<h3>B.Tech — Computer Science Engineering</h3>
-
-<p>
-Graphic Era Deemed to be University, Dehradun
-</p>
-
-</div>
-
-</div>
+        <p class="section-description">
+            Academic milestones and the foundation behind my technical journey.
+        </p>
 
 
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-card">
-
-<span>2025</span>
-
-<h3>Class XII — CBSE</h3>
-
-<p>
-Percentage: 81%
-</p>
-
-</div>
-
-</div>
+        <div class="timeline">
 
 
-<div class="timeline-item">
+            <div class="timeline-item">
 
-<div class="timeline-dot"></div>
+                <div class="timeline-year">2025 — 2029</div>
 
-<div class="timeline-card">
+                <h3>B.Tech — Computer Science Engineering</h3>
 
-<span>2023</span>
+                <p>
+                    Graphic Era Deemed to be University, Dehradun
+                </p>
 
-<h3>Class X — CBSE</h3>
-
-<p>
-Percentage: 89.4%
-</p>
-
-</div>
-
-</div>
+            </div>
 
 
-</div>
+            <div class="timeline-item">
 
-</div>
+                <div class="timeline-year">2025</div>
+
+                <h3>Class XII — CBSE</h3>
+
+                <p>
+                    Percentage: 81%
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-year">2023</div>
+
+                <h3>Class X — CBSE</h3>
+
+                <p>
+                    Percentage: 89.4%
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1209,104 +1282,73 @@ Percentage: 89.4%
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">05 — Activities</div>
+        <div class="section-label">05 / Activities</div>
 
-<h2 class="section-title">
-Beyond the classroom
-</h2>
+        <h2 class="section-title">
+            Beyond the classroom.
+        </h2>
 
-
-<div class="achievement-grid">
-
-
-<div class="achievement">
-
-<div class="achievement-icon">🏆</div>
-
-<h3>Smart India Hackathon</h3>
-
-<p>
-Participated in a national-level innovation and problem-solving
-environment focused on developing technology-based solutions.
-</p>
-
-</div>
+        <p class="section-description">
+            Experiences that helped me explore technology, teamwork
+            and practical problem solving.
+        </p>
 
 
-<div class="achievement">
-
-<div class="achievement-icon">☁️</div>
-
-<h3>AWS Cloud Ignite</h3>
-
-<p>
-Participated in AWS-focused learning and technology activities,
-exploring cloud computing concepts and collaborative learning.
-</p>
-
-</div>
+        <div class="achievements">
 
 
-<div class="achievement">
+            <div class="achievement">
 
-<div class="achievement-icon">🏀</div>
+                <h3>Smart India Hackathon</h3>
 
-<h3>Basketball</h3>
+                <p>
+                    Participated in Smart India Hackathon and experienced
+                    collaborative problem solving around real-world challenges.
+                </p>
 
-<p>
-Participated in basketball activities and tournaments, developing
-teamwork, discipline and leadership through sport.
-</p>
-
-</div>
+            </div>
 
 
-</div>
+            <div class="achievement">
 
-</div>
+                <h3>AWS Cloud Ignite</h3>
 
-</section>
+                <p>
+                    Participated in AWS Cloud Ignite and explored
+                    cloud and emerging technology concepts.
+                </p>
+
+            </div>
 
 
-<!-- =========================
-     GITHUB
-========================= -->
+            <div class="achievement">
 
-<section>
+                <h3>Basketball</h3>
 
-<div class="container">
+                <p>
+                    Played basketball and participated in a tournament,
+                    developing teamwork and discipline through sport.
+                </p>
 
-<div class="github-box">
+            </div>
 
-<div class="section-label">
-Open Source & Development
-</div>
 
-<h2>Let's build something interesting.</h2>
+            <div class="achievement">
 
-<p>
-Explore my GitHub profile to see my coding journey, projects
-and experiments as I continue developing my computer science skills.
-</p>
+                <h3>Continuous Learning</h3>
 
-<div class="hero-buttons" style="justify-content:center;">
+                <p>
+                    Currently strengthening programming and DSA fundamentals
+                    while building projects alongside university coursework.
+                </p>
 
-<a
-href="https://github.com/justadi-tya"
-target="_blank"
-class="btn btn-primary">
+            </div>
 
-Visit My GitHub →
+        </div>
 
-</a>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1317,64 +1359,43 @@ Visit My GitHub →
 
 <section id="contact">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-label">06 — Contact</div>
+        <div class="section-label">06 / Contact</div>
 
-<h2 class="section-title">
-Let's connect
-</h2>
+        <div class="contact-box">
 
-<p class="section-description">
-Have an idea, project or opportunity? Feel free to connect with me.
-</p>
+            <h2>Let's build something.</h2>
 
+            <p>
+                I'm always interested in learning, collaborating on projects
+                and connecting with people interested in technology.
+            </p>
 
-<div class="contact-grid">
+            <div class="socials">
 
+                <a class="social"
+                   href="https://github.com/justadi-tya"
+                   target="_blank">
+                    GitHub
+                </a>
 
-<div class="contact-card">
+                <a class="social"
+                   href="https://www.linkedin.com/"
+                   target="_blank">
+                    LinkedIn
+                </a>
 
-<h3>GitHub</h3>
+                <a class="social"
+                   href="mailto:your-email@example.com">
+                    Email
+                </a>
 
-<p>
-Check out my projects and coding journey.
-</p>
+            </div>
 
-<br>
+        </div>
 
-<a
-class="contact-link"
-href="https://github.com/justadi-tya"
-target="_blank">
-
-github.com/justadi-tya →
-
-</a>
-
-</div>
-
-
-<div class="contact-card">
-
-<h3>Languages</h3>
-
-<p>
-English & Hindi
-</p>
-
-<br>
-
-<p>
-Interested in technology, coding and problem solving.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1385,14 +1406,38 @@ Interested in technology, coding and problem solving.
 
 <footer>
 
-<div class="container">
-
-© 2026 Aditya Nautiyal · Built with HTML & CSS
-
-</div>
+    <div class="container">
+        © 2026 Aditya Nautiyal · Built with HTML & CSS
+    </div>
 
 </footer>
 
+
+<script>
+
+function toggleMenu(){
+
+    document
+        .getElementById("navLinks")
+        .classList
+        .toggle("active");
+
+}
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document
+            .getElementById("navLinks")
+            .classList
+            .remove("active");
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
